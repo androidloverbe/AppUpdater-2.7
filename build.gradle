@@ -19,10 +19,6 @@ allprojects {
         google()
     }
 }
-wrapper {
-    distributionType = Wrapper.DistributionType.ALL
-    setDistributionUrl("https://services.gradle.org/distributions/gradle-5.6.4-all.zip")
-}
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
