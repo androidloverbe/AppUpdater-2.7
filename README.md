@@ -28,7 +28,7 @@ repositories {
 And add the library to your module **build.gradle**:
 ```Gradle
 dependencies {
-    compile 'com.github.javiersantos:AppUpdater:2.6.5'
+    implementation 'com.github.androidloverbe:AppUpdater-2.7:2.7'
 }
 ```
 
