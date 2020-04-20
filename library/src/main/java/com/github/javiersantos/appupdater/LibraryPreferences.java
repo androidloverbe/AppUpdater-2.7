@@ -2,7 +2,7 @@ package com.github.javiersantos.appupdater;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 
 class LibraryPreferences {
     private SharedPreferences sharedPreferences;
