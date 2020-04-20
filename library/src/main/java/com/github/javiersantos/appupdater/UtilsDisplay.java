@@ -82,7 +82,10 @@ class UtilsDisplay {
         NotificationCompat.Builder builder = getBaseNotification(context, contentIntent, title, content, smallIconResourceId)
                 .addAction(R.drawable.ic_system_update_white_24dp, context.getResources().getString(R.string.appupdater_btn_update), pendingIntentUpdate);
 
-        notificationManager.notify(0, builder.build());
+        if(notificationManager != null)
+        {
+            notificationManager.notify(0, builder.build());
+        }
     }
 
     static void showUpdateNotAvailableNotification(Context context, String title, String content, int smallIconResourceId) {
@@ -94,7 +97,10 @@ class UtilsDisplay {
         NotificationCompat.Builder builder = getBaseNotification(context, contentIntent, title, content, smallIconResourceId)
                 .setAutoCancel(true);
 
-        notificationManager.notify(0, builder.build());
+        if(notificationManager != null)
+        {
+            notificationManager.notify(0, builder.build());
+        }
     }
 
     private static NotificationCompat.Builder getBaseNotification(Context context, PendingIntent contentIntent, String title, String content, int smallIconResourceId) {
