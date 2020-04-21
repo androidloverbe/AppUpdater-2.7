@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("ALL")
 @RunWith(AndroidJUnit4.class)
 public class NoUpdateAvailableTest {
 
