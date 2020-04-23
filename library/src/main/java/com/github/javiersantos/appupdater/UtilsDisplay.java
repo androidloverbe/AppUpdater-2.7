@@ -1,6 +1,5 @@
 package com.github.javiersantos.appupdater;
 
-import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -61,7 +60,7 @@ class UtilsDisplay {
     }
 
     static Snackbar showUpdateNotAvailableSnackbar(final Context context, String content, Boolean indefinite) {
-        Activity activity = (Activity) context;
+        AppCompatActivity activity = (AppCompatActivity) context;
         int snackbarTime = indefinite ? Snackbar.LENGTH_INDEFINITE : Snackbar.LENGTH_LONG;
 
         /*if (indefinite) {
