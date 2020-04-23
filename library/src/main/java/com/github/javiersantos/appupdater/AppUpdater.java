@@ -7,6 +7,7 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import com.google.android.material.snackbar.Snackbar;
+
 import androidx.appcompat.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
@@ -31,7 +32,7 @@ public class AppUpdater implements IAppUpdater {
     private Boolean showAppUpdated;
     private String titleUpdate, descriptionUpdate, btnDismiss, btnUpdate, btnDisable; // Update available
     private String titleNoUpdate, descriptionNoUpdate; // Update not available
-    private int iconResId;
+    private int iconResId = 0;
     private UtilsAsync.LatestAppVersion latestAppVersion;
     private DialogInterface.OnClickListener btnUpdateClickListener, btnDismissClickListener, btnDisableClickListener;
 

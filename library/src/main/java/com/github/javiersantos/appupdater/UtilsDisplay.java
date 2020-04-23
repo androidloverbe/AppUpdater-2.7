@@ -21,7 +21,6 @@ class UtilsDisplay {
     static AlertDialog showUpdateAvailableDialog(final Context context, String title, String content, String btnNegative, String btnPositive, String btnNeutral, final DialogInterface.OnClickListener updateClickListener, final DialogInterface.OnClickListener dismissClickListener, final DialogInterface.OnClickListener disableClickListener) {
         return new AlertDialog.Builder(context)
                 .setTitle(title)
-                .setIcon(R.drawable.ic_stat_name)
                 .setMessage(content)
                 .setPositiveButton(btnPositive, updateClickListener)
                 .setNegativeButton(btnNegative, dismissClickListener)
@@ -31,7 +30,6 @@ class UtilsDisplay {
     static AlertDialog showUpdateNotAvailableDialog(final Context context, String title, String content) {
         return new AlertDialog.Builder(context)
                 .setTitle(title)
-                .setIcon(R.drawable.ic_stat_name)
                 .setMessage(content)
                 .setPositiveButton(context.getResources().getString(android.R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
