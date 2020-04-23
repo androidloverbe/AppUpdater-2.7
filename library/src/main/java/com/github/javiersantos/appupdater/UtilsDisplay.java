@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.media.RingtoneManager;
 import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.appcompat.app.AlertDialog;
 import android.view.View;
@@ -39,7 +41,7 @@ class UtilsDisplay {
     }
 
     static Snackbar showUpdateAvailableSnackbar(final Context context, String content, Boolean indefinite, final UpdateFrom updateFrom, final URL apk) {
-        Activity activity = (Activity) context;
+        AppCompatActivity activity = (AppCompatActivity) context;
         int snackbarTime = indefinite ? Snackbar.LENGTH_INDEFINITE : Snackbar.LENGTH_LONG;
 
         /*if (indefinite) {
