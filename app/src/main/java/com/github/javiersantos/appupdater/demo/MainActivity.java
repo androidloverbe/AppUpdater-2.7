@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 .setUpdateFrom(UpdateFrom.GOOGLE_PLAY)
                 .setDisplay(Display.DIALOG)
                 .showAppUpdated(true)
+                .setIcon(R.drawable.ic_system_update_white_24dp)
                 .start());
 
         binding.included.snackbarNoUpdate.setOnClickListener(view -> new AppUpdater(mContext)
