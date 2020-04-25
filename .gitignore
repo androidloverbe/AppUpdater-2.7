@@ -12,9 +12,9 @@ bin/
 gen/
 
 # Gradle files
-build/
-.gradle
 .gradle/
+build/
+
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -35,6 +35,6 @@ captures/
 .idea/
 
 # IntelliJ
-*.iml  /local.properties /.idea/workspace.xml /.idea/libraries .idea .DS_Store /build /captures .externalNativeBuild
+*.iml 
 
 
