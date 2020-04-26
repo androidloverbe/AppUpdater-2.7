@@ -189,8 +189,8 @@ class UtilsLibrary {
         try {
             Response response = client.newCall(request).execute();
             body = response.body();
-            //BufferedReader reader = new BufferedReader(new InputStreamReader(body.byteStream(), StandardCharsets.UTF_8));
-            BufferedReader reader = new BufferedReader(new InputStreamReader(body.byteStream(),"UTF-8"));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(body.byteStream(), StandardCharsets.UTF_8));
+            //BufferedReader reader = new BufferedReader(new InputStreamReader(body.byteStream(),"UTF-8"));
             StringBuilder str = new StringBuilder();
 
             String line;
