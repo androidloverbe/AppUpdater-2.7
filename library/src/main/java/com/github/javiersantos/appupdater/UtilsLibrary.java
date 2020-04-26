@@ -54,7 +54,7 @@ class UtilsLibrary {
     }
 
     static Integer getAppInstalledVersionCode(Context context) {
-        int versionCode = 0;
+        Integer versionCode = 0;
 
         try {
             versionCode = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode;
@@ -89,7 +89,7 @@ class UtilsLibrary {
     }
 
     static Boolean isStringAnUrl(String s) {
-        boolean res = false;
+        Boolean res = false;
         try {
             new URL(s);
             res = true;
@@ -99,10 +99,12 @@ class UtilsLibrary {
     }
 
     static Boolean getDurationEnumToBoolean(Duration duration) {
-        boolean res = false;
+        Boolean res = false;
 
-        if (duration == Duration.INDEFINITE) {
-            res = true;
+        switch (duration) {
+            case INDEFINITE:
+                res = true;
+                break;
         }
 
         return res;
@@ -135,10 +137,12 @@ class UtilsLibrary {
     }
 
     static Update getLatestAppVersionStore(Context context, UpdateFrom updateFrom, GitHub gitHub) {
-        if (updateFrom == UpdateFrom.GOOGLE_PLAY) {
-            return getLatestAppVersionGooglePlay(context);
+        switch (updateFrom) {
+            case GOOGLE_PLAY:
+                return getLatestAppVersionGooglePlay(context);
+            default:
+                return getLatestAppVersionHttp(context, updateFrom, gitHub);
         }
-        return getLatestAppVersionHttp(context, updateFrom, gitHub);
     }
 
     private static Update getLatestAppVersionGooglePlay(Context context) {
@@ -176,7 +180,7 @@ class UtilsLibrary {
     }
 
     private static Update getLatestAppVersionHttp(Context context, UpdateFrom updateFrom, GitHub gitHub) {
-        boolean isAvailable = false;
+        Boolean isAvailable = false;
         String source = "";
         OkHttpClient client = new OkHttpClient();
         URL url = getUpdateURL(context, updateFrom, gitHub);
@@ -188,7 +192,6 @@ class UtilsLibrary {
         try {
             Response response = client.newCall(request).execute();
             body = response.body();
-            assert body != null;
             BufferedReader reader = new BufferedReader(new InputStreamReader(body.byteStream(), "UTF-8"));
             StringBuilder str = new StringBuilder();
 
@@ -310,7 +313,7 @@ class UtilsLibrary {
     }
 
     static Boolean isNetworkAvailable(Context context) {
-        boolean res = false;
+        Boolean res = false;
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (cm != null) {
             NetworkInfo networkInfo = cm.getActiveNetworkInfo();
