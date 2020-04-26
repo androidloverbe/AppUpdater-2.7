@@ -25,7 +25,12 @@ class UtilsDisplay {
                 .setIconAttribute(android.R.attr.alertDialogIcon)
                 .setMessage(content)
                 .setPositiveButton(btnPositive, updateClickListener)
-                .setNegativeButton(btnNegative, dismissClickListener)
+                .setNegativeButton(btnNegative,new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
                 .setNeutralButton(btnNeutral, disableClickListener).create();
     }
 
