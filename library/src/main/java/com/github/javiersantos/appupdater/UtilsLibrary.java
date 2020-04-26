@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
 import okhttp3.OkHttpClient;
@@ -54,7 +55,7 @@ class UtilsLibrary {
     }
 
     static Integer getAppInstalledVersionCode(Context context) {
-        Integer versionCode = 0;
+        int versionCode = 0;
 
         try {
             versionCode = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode;
@@ -89,7 +90,7 @@ class UtilsLibrary {
     }
 
     static Boolean isStringAnUrl(String s) {
-        Boolean res = false;
+        boolean res = false;
         try {
             new URL(s);
             res = true;
@@ -99,12 +100,10 @@ class UtilsLibrary {
     }
 
     static Boolean getDurationEnumToBoolean(Duration duration) {
-        Boolean res = false;
+        boolean res = false;
 
-        switch (duration) {
-            case INDEFINITE:
-                res = true;
-                break;
+        if (duration == Duration.INDEFINITE) {
+            res = true;
         }
 
         return res;
@@ -137,12 +136,10 @@ class UtilsLibrary {
     }
 
     static Update getLatestAppVersionStore(Context context, UpdateFrom updateFrom, GitHub gitHub) {
-        switch (updateFrom) {
-            case GOOGLE_PLAY:
-                return getLatestAppVersionGooglePlay(context);
-            default:
-                return getLatestAppVersionHttp(context, updateFrom, gitHub);
+        if (updateFrom == UpdateFrom.GOOGLE_PLAY) {
+            return getLatestAppVersionGooglePlay(context);
         }
+        return getLatestAppVersionHttp(context, updateFrom, gitHub);
     }
 
     private static Update getLatestAppVersionGooglePlay(Context context) {
@@ -180,7 +177,7 @@ class UtilsLibrary {
     }
 
     private static Update getLatestAppVersionHttp(Context context, UpdateFrom updateFrom, GitHub gitHub) {
-        Boolean isAvailable = false;
+        boolean isAvailable = false;
         String source = "";
         OkHttpClient client = new OkHttpClient();
         URL url = getUpdateURL(context, updateFrom, gitHub);
@@ -192,7 +189,7 @@ class UtilsLibrary {
         try {
             Response response = client.newCall(request).execute();
             body = response.body();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(body.byteStream(), "UTF-8"));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(body.byteStream(), StandardCharsets.UTF_8));
             StringBuilder str = new StringBuilder();
 
             String line;
@@ -313,7 +310,7 @@ class UtilsLibrary {
     }
 
     static Boolean isNetworkAvailable(Context context) {
-        Boolean res = false;
+        boolean res = false;
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (cm != null) {
             NetworkInfo networkInfo = cm.getActiveNetworkInfo();
