@@ -50,7 +50,7 @@ class UtilsDisplay {
         } else {
             snackbarTime = Snackbar.LENGTH_LONG;
         }*/
-
+        assert activity != null;
         Snackbar snackbar = Snackbar.make(activity.findViewById(android.R.id.content), content, snackbarTime);
         snackbar.setAction(context.getResources().getString(R.string.appupdater_btn_update), new View.OnClickListener() {
             @Override
