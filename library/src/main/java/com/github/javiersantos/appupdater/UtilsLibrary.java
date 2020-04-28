@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
 import okhttp3.OkHttpClient;
@@ -195,7 +196,7 @@ class UtilsLibrary {
         try {
             Response response = client.newCall(request).execute();
             body = response.body();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(body.byteStream(), "UTF-8"));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(body.byteStream(), StandardCharsets.UTF_8));
             StringBuilder str = new StringBuilder();
 
             String line;
