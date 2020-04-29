@@ -3,7 +3,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.androidloverbe'
 android {
     compileSdkVersion 29
-    buildToolsVersion "28.0.3"
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         minSdkVersion 19
