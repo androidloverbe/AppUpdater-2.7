@@ -105,10 +105,8 @@ class UtilsLibrary {
     static Boolean getDurationEnumToBoolean(Duration duration) {
         Boolean res = false;
 
-        switch (duration) {
-            case INDEFINITE:
-                res = true;
-                break;
+        if (duration == Duration.INDEFINITE) {
+            res = true;
         }
 
         return res;
