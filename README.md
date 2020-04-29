@@ -28,7 +28,7 @@ repositories {
 And add the library to your module **build.gradle**:
 ```Gradle
 dependencies {
-    implementation 'com.github.androidloverbe:AppUpdater-2.8:2.8'
+    implementation 'com.github.androidloverbe:AppUpdater-2.8:2.8.1'
 }
 ```
 
