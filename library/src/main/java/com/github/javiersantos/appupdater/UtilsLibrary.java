@@ -58,7 +58,7 @@ class UtilsLibrary {
     }
 
     static Integer getAppInstalledVersionCode(Context context) {
-        Integer versionCode = 0;
+        int versionCode = 0;
 
         try {
             versionCode = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode;
@@ -93,7 +93,7 @@ class UtilsLibrary {
     }
 
     static Boolean isStringAnUrl(String s) {
-        Boolean res = false;
+        boolean res = false;
         try {
             new URL(s);
             res = true;
@@ -103,7 +103,7 @@ class UtilsLibrary {
     }
 
     static Boolean getDurationEnumToBoolean(Duration duration) {
-        Boolean res = false;
+        boolean res = false;
 
         if (duration == Duration.INDEFINITE) {
             res = true;
@@ -139,12 +139,10 @@ class UtilsLibrary {
     }
 
     static Update getLatestAppVersionStore(Context context, UpdateFrom updateFrom, GitHub gitHub) {
-        switch (updateFrom) {
-            case GOOGLE_PLAY:
-                return getLatestAppVersionGooglePlay(context);
-            default:
-                return getLatestAppVersionHttp(context, updateFrom, gitHub);
+        if (updateFrom == UpdateFrom.GOOGLE_PLAY) {
+            return getLatestAppVersionGooglePlay(context);
         }
+        return getLatestAppVersionHttp(context, updateFrom, gitHub);
     }
 
     private static Update getLatestAppVersionGooglePlay(Context context) {
@@ -182,7 +180,7 @@ class UtilsLibrary {
     }
 
     private static Update getLatestAppVersionHttp(Context context, UpdateFrom updateFrom, GitHub gitHub) {
-        Boolean isAvailable = false;
+        boolean isAvailable = false;
         String source = "";
         OkHttpClient client = new OkHttpClient();
         URL url = getUpdateURL(context, updateFrom, gitHub);
@@ -315,7 +313,7 @@ class UtilsLibrary {
     }
 
     static Boolean isNetworkAvailable(Context context) {
-        Boolean res = false;
+        boolean res = false;
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (cm != null) {
             NetworkInfo networkInfo = cm.getActiveNetworkInfo();
